@@ -1,0 +1,4 @@
+com\advlatam\usuarios\app\Application.class
+com\advlatam\usuarios\model\Usuario.class
+com\advlatam\usuarios\controller\UsuarioController.class
+com\advlatam\usuarios\repository\UsuariosRepository.class

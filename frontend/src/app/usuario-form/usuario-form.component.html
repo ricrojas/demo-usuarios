@@ -1,0 +1,83 @@
+<div class="container">
+  <h1>Usuarios</h1>
+  <div [hidden]="submitted">
+    <form (ngSubmit)="onSubmit()" #usuarioForm="ngForm">
+    
+      <div class="form-row">
+        <div class="form-group col-md-12">
+      	  <label for="cedula">C&eacute;dula</label>
+          <div class="input-group input-group-lg">
+            <input numbersOnly type="text" class="form-control" id="cedula" pattern="[0-9]{10}" required minlength="10" maxlength="10" [(ngModel)]="model.cedula" name="cedula">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" (click)="onBuscar()">Buscar por c&eacute;dula</button>
+            </span>
+          </div>
+        </div>
+      </div>
+	  <br />
+	  
+	  <div class="form-row">
+    	<div class="form-group col-md-6">
+     	  <label for="primerNombre">Primer nombre</label>
+          <input type="text" class="form-control" id="primerNombre" [(ngModel)]="model.primerNombre" name="primerNombre" required>
+      	</div>
+      	<div class="form-group col-md-6">
+      	  <label for="segundoNombre">Segundo nombre</label>
+          <input type="text" class="form-control" id="segundoNombre" [(ngModel)]="model.segundoNombre" name="segundoNombre" required>
+      	</div>
+      </div>
+      
+	  <div class="form-row">
+    	<div class="form-group col-md-6">
+     	  <label for="primerApellido">Primer apellido</label>
+          <input type="text" class="form-control" id="primerApellido" [(ngModel)]="model.primerApellido" name="primerApellido" required>	
+     	</div>
+      	<div class="form-group col-md-6">
+      	  <label for="segundoApellido">Segundo apellido</label>
+		  <input type="text" class="form-control" id="segundoNombre" [(ngModel)]="model.segundoApellido" name="segundoApellido" required>	
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="estadoCivil">Estado Civil</label>
+          <select class="form-control" id="estadoCivil" [(ngModel)]="model.estadoCivil" name="estadoCivil" required>
+    		<option *ngFor="let est of estadosCiviles" [value]="est">{{est}}</option>
+ 		  </select>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="direccion1">Direccion</label>
+          <input type="text" class="form-control" id="direccion1" [(ngModel)]="model.direccion1" name="direccion1" required>
+        </div>
+      </div>      
+      
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="direccion2">Direccion 2</label>
+          <input type="text" class="form-control" id="direccion2" [(ngModel)]="model.direccion2" name="direccion2" required>
+        </div>
+      </div>     
+       
+	  <div class="form-row">
+    	<div class="form-group col-md-6">
+     	  <label for="telefono">Telefono</label>
+          <input numbersOnly type="text" class="form-control" id="telefono" [(ngModel)]="model.telefono" name="telefono" required>
+      	</div>
+      	<div class="form-group col-md-6">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" email [(ngModel)]="model.email" name="email" required>      	  
+      	</div>
+      </div> 
+       
+      <button type="submit" class="btn btn-success" [disabled]="!usuarioForm.form.valid">Submit</button>
+    </form>
+  </div>
+  
+  <div [hidden]="!submitted">
+    <h4>Usuario enviado</h4>
+    <button class="btn btn-primary" (click)="usuarioForm.reset(); submitted=false">Regresar</button>
+  </div>
+</div>
